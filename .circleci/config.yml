@@ -1,0 +1,70 @@
+version: 2.1
+
+orbs:
+  webhook: eddiewebb/webhook@volatile
+
+defaults: &defaults
+  environment:
+    CI_SCRIPTS: "npx --quiet --package @reactioncommerce/ci-scripts@1.10.3"
+    CONSUMER_GROUP_ID_ACCOUNTS: ""
+    CONSUMER_GROUP_ID_GROUPS: ""
+    DOCKER_NAME: "federated-gateway"
+    DOCKER_REPOSITORY: "reactioncommerce/federated-gateway"
+    GITOPS_PR_WEBHOOK: "https://w603b5hwp1.execute-api.us-east-1.amazonaws.com/dev/pullrequests"
+    GLOBAL_CACHE_VERSION: “v3”
+  docker:
+    - image: circleci/node:12-stretch
+
+jobs:
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Run Lint Suite
+          command: |
+            ${CI_SCRIPTS} lint-dockerfiles
+            ${CI_SCRIPTS} lint-shell-scripts
+            ${CI_SCRIPTS} lint-javascript
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Test JavaScript
+          command: |
+            npm install
+            npm test
+
+
+  docker-build-tag-push:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: 'docker: federated-gateway'
+          command: |
+            ${CI_SCRIPTS} docker-labels >> Dockerfile
+            ${CI_SCRIPTS} build-metadata
+            ${CI_SCRIPTS} docker-build-tag-push . ${DOCKER_REPOSITORY}
+      - webhook/notify:
+          endpoint: "${GITOPS_PR_WEBHOOK}"
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - test
+      - lint
+      - docker-build-tag-push:
+          context: reaction-publish-docker
+          requires:
+            - lint
+            - test
+#          filters:
+#            branches:
+#              only: trunk
