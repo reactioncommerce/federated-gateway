@@ -6,8 +6,6 @@ orbs:
 defaults: &defaults
   environment:
     CI_SCRIPTS: "npx --quiet --package @reactioncommerce/ci-scripts@1.10.3"
-    CONSUMER_GROUP_ID_ACCOUNTS: ""
-    CONSUMER_GROUP_ID_GROUPS: ""
     DOCKER_NAME: "federated-gateway"
     DOCKER_REPOSITORY: "reactioncommerce/federated-gateway"
     GITOPS_PR_WEBHOOK: "https://w603b5hwp1.execute-api.us-east-1.amazonaws.com/dev/pullrequests"
