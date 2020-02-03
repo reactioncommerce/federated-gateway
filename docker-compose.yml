@@ -1,12 +1,9 @@
 version: "3.7"
 
 networks:
-  auth:
+  reaction:
     external:
-      name: auth.reaction.localhost
-  federation:
-    external:
-      name: federation.reaction.localhost
+      name: reaction.localhost
 
 services:
   gateway:
@@ -14,8 +11,7 @@ services:
     command: "node --eval 'console.log(\"TODO: No startup script added yet.\")'"
     networks:
       default:
-      auth:
-      federation:
+      reaction:
     working_dir: "/app"
     env_file: .env
     ports:
