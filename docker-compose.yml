@@ -1,0 +1,24 @@
+version: "3.7"
+
+networks:
+  reaction:
+    external:
+      name: reaction.localhost
+
+services:
+  gateway:
+    image: reactioncommerce/node-dev:12.14.1-v1
+    command: "node --eval 'console.log(\"TODO: No startup script added yet.\")'"
+    networks:
+      default:
+      reaction:
+    working_dir: "/app"
+    env_file: .env
+    ports:
+      - "2000:2000"
+    volumes:
+      - .:/app
+      - node-modules:/app/node_modules
+
+volumes:
+  node-modules:

@@ -39,16 +39,22 @@ Start by cloning the Federated Gateway repository.
 git clone git@github.com:reactioncommerce/federated-gateway.git
 ```
 
+Create any networks that you have not already created:
+
+```sh
+docker network create federation.reaction.localhost
+```
+
 All Reaction Commerce services use [Docker][docker] and [Docker Compose][docker-compose] with a `.env` file to store environment configuration. If running outside of the Reaction Platform, create an `.env` file for a project by running `bin/setup` in that project's root directory.
 
 _**NEVER** commit the `.env` file to git._
 
-Start our Federated Gateway service. We'll change into Federated Gateway's root directory, create a `.env` and start it's Docker containers using `docker-compose`.
+Start our Federated Gateway service. We'll change into Federated Gateway's root directory, create a `.env` and start its Docker containers using `docker-compose`.
 
 ```sh
 cd federated-gateway
 bin/setup
-docker-compose up -d
+docker-compose up
 ```
 
 The initial download and build of these Docker artifacts can take a few minutes depending on your internet connection and host machine.
@@ -59,7 +65,7 @@ The initial download and build of these Docker artifacts can take a few minutes 
 Start this service by building and running the Docker containers using the Docker Compose `up` command.
 
 ```sh
-docker-compose up --build -d
+docker-compose up
 ```
 TODO: add URL where service will be running
 
@@ -73,9 +79,9 @@ TODO: add endpoint URL
 
 ## Command Cheatsheet
 
-- Start containers: `docker-compose up -d`
+- Start containers: `docker-compose up`
 - Stop containers: `docker-compose stop`
-- Rebuild containers: `docker-compose up --build -d`
+- Rebuild containers: `docker-compose up --build`
 - Remove containers (deletes data!): `docker-compose down`
 - View container logs: `docker-compose logs -f`
 - Run linter: `docker-compose run --rm federated-gateway npm run lint`
