@@ -1,0 +1,29 @@
+{
+  "name": "federated-gateway",
+  "version": "0.0.0",
+  "description": "An access aware federated GraphQL API gateway for the Reaction Commerce ecosystem, built on Apollo Federation.",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reactioncommerce/federated-gateway.git"
+  },
+  "keywords": ["GraphQL", "federated", "gateway", "apollo", "reaction", "federation"],
+  "author": {
+    "name": "Reaction Commerce",
+    "email": "engineering@reactioncommerce.com",
+    "url": "https://reactioncommerce.com"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/reactioncommerce/federated-gateway/issues"
+  },
+  "homepage": "https://github.com/reactioncommerce/federated-gateway#readme"
+}
