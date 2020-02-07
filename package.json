@@ -12,8 +12,11 @@
     "apollo-server": "^2.10.0",
     "reekwire": "github:reactioncommerce/reekwire"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  },
   "scripts": {
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
