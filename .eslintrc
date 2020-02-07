@@ -1,17 +1,14 @@
 {
-  "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
     "plugin:node/recommended"
   ],
   "env": {
     "node": true,
-    "es6": true,
-    "jest": true
+    "es6": true
   },
   "plugins": [
     "import",
-    "jest",
     "promise"
   ],
   "parserOptions": {
@@ -37,8 +34,8 @@
     "allowImportExportEverywhere": true
   },
   "rules": {
-    "node/no-unpublished-import": false,
-    "node/no-missing-import": "disallow",
+    "node/no-unpublished-import": 0,
+    "node/no-missing-import": 2,
     "prefer-destructuring": 0
   }
 }
