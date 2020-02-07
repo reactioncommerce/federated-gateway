@@ -10,6 +10,7 @@
   "dependencies": {
     "@apollo/gateway": "^0.12.0",
     "apollo-server": "^2.10.0",
+    "envalid": "^6.0.1",
     "reekwire": "github:reactioncommerce/reekwire"
   },
   "devDependencies": {
