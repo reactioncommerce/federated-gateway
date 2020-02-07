@@ -13,7 +13,7 @@ async function main () {
     subscriptions: false
   });
 
-  const { url } = await server.listen();
+  const { url } = await server.listen({ port: 2000 });
   console.log(`🚀 Server ready at ${url}`);
 }
 
