@@ -1,11 +1,17 @@
 import require from "reekwire";
+import config from "./config.js";
 
 const { ApolloServer } = require("apollo-server");
 const { ApolloGateway } = require("@apollo/gateway");
 
 async function main () {
+  if (!config.SERVICES.length) {
+    // TODO: logger
+    console.warn("No services registered.");
+  }
+
   const gateway = new ApolloGateway({
-    serviceList: []
+    serviceList: config.SERVICES
   });
 
   const server = new ApolloServer({
