@@ -61,7 +61,15 @@ The initial download and build of these Docker artifacts can take a few minutes 
 
 [Back to Top][top]
 
+## Configuration
+
+Services are to be specified in the `SERVICES` environment variable.
+This setting is an array of objects of the form `{ name: String, url: String }`, where the url is a path to the graphql endpoint of the service being registered.
+
+[Back to Top][top]
+
 ## Up & Running
+
 Start this service by building and running the Docker containers using the Docker Compose `up` command.
 
 ```sh
