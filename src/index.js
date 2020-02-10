@@ -1,4 +1,7 @@
-import require from "reekwire";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+
 import config from "./config.js";
 
 const { ApolloServer } = require("apollo-server");
