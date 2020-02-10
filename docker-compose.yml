@@ -8,7 +8,7 @@ networks:
 services:
   gateway:
     image: reactioncommerce/node-dev:12.14.1-v1
-    command: "node --eval 'console.log(\"TODO: No startup script added yet.\")'"
+    command: "npm run start"
     networks:
       default:
       reaction:

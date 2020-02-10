@@ -20,6 +20,7 @@
   },
   "scripts": {
     "lint": "eslint src",
+    "start": "node --experimental-modules --experimental-json-modules src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
