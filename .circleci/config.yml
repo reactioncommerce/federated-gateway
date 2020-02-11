@@ -23,6 +23,7 @@ jobs:
       - run:
           name: Run Lint Suite
           command: |
+            ${CI_SCRIPTS} lint-dockerfiles
             ${CI_SCRIPTS} lint-javascript
   test:
     <<: *defaults
