@@ -2,8 +2,31 @@
   "name": "federated-gateway",
   "version": "0.0.0",
   "description": "An access aware federated GraphQL API gateway for the Reaction Commerce ecosystem, built on Apollo Federation.",
+  "keywords": [
+    "GraphQL",
+    "federated",
+    "gateway",
+    "apollo",
+    "reaction",
+    "federation"
+  ],
   "main": "src/index.js",
   "type": "module",
+  "homepage": "https://github.com/reactioncommerce/federated-gateway#readme",
+  "url": "https://github.com/reactioncommerce/federated-gateway",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reactioncommerce/federated-gateway.git"
+  },
+  "author": {
+    "name": "Reaction Commerce",
+    "email": "engineering@reactioncommerce.com",
+    "url": "https://reactioncommerce.com"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/reactioncommerce/federated-gateway/issues"
+  },
   "directories": {
     "doc": "docs"
   },
@@ -22,27 +45,5 @@
     "lint": "eslint src",
     "start": "node --experimental-modules --experimental-json-modules src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/reactioncommerce/federated-gateway.git"
-  },
-  "keywords": [
-    "GraphQL",
-    "federated",
-    "gateway",
-    "apollo",
-    "reaction",
-    "federation"
-  ],
-  "author": {
-    "name": "Reaction Commerce",
-    "email": "engineering@reactioncommerce.com",
-    "url": "https://reactioncommerce.com"
-  },
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/reactioncommerce/federated-gateway/issues"
-  },
-  "homepage": "https://github.com/reactioncommerce/federated-gateway#readme"
+  }
 }
