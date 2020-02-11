@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
     "plugin:node/recommended"
@@ -12,7 +13,7 @@
     "promise"
   ],
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "arrowFunctions": true,
@@ -22,6 +23,7 @@
       "destructuring": true,
       "forOf": true,
       "generators": false,
+      "impliedStrict": true,
       "modules": true,
       "objectLiteralComputedProperties": true,
       "objectLiteralDuplicateProperties": false,
