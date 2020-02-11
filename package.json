@@ -1,6 +1,9 @@
 {
   "name": "federated-gateway",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=12.14.1"
+  },
   "description": "An access aware federated GraphQL API gateway for the Reaction Commerce ecosystem, built on Apollo Federation.",
   "keywords": [
     "GraphQL",
