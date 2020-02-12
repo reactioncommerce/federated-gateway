@@ -1,4 +1,10 @@
-version: "3.7"
+# This docker-compose file is used to run the project's published image
+#
+# Usage: docker-compose up [-d]
+#
+# See comment in docker-compose.dev.yml if you want to run for development.
+
+version: '3.4'
 
 networks:
   reaction:
@@ -6,19 +12,12 @@ networks:
       name: reaction.localhost
 
 services:
-  gateway:
-    image: reactioncommerce/node-dev:12.14.1-v1
-    command: "npm run start"
+  federated-gateway:
+    image: reactioncommerce/federated-gateway:1.0.0
+    env_file:
+      - ./.env
     networks:
       default:
       reaction:
-    working_dir: "/app"
-    env_file: .env
     ports:
-      - "2000:2000"
-    volumes:
-      - .:/app
-      - node-modules:/app/node_modules
-
-volumes:
-  node-modules:
+      - "4100:4100"
