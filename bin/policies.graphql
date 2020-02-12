@@ -1,0 +1,14 @@
+mutation($policies: [PolicyInput]!) {
+  upsertPolicies(input: {
+    flavor: glob,
+    policies: $policies
+  }) {
+    actions
+    conditions
+    description
+    effect
+    id
+    resources
+    subjects
+  }
+}
