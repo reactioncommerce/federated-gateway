@@ -1,14 +1,1 @@
-[
-  {
-    "id": "reaction:federated-gateway:policy:public",
-    "subjects": [
-      "reaction:users:*"
-    ],
-    "resources": [
-    ],
-    "actions": [
-      "read"
-    ],
-    "effect": "allow"
-  }
-]
+[]
