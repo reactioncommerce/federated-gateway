@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Please Use Google Shell Style: https://google.github.io/styleguide/shell.xml
+
+# ---- Start unofficial bash strict mode boilerplate
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -o errexit  # always exit on error
+set -o errtrace # trap errors in functions as well
+set -o pipefail # don't ignore exit codes when piping output
+set -o posix    # more strict failures in subshells
+# set -x          # enable debugging
+
+function json_escape() {
+  cat | tr -d "\n" | sed 's;";\\";g'
+}
+
+function main() {
+  local cwd="$(dirname "${BASH_SOURCE[0]}")"
+  source "$cwd/../.env"
+
+  local method="POST"
+  local query="$(json_escape < "$cwd/policies.graphql")"
+  local policies="$(cat "$cwd/policies.json")"
+
+  curl --request $method \
+    --fail --show-error --silent \
+    --url "$AUTHORIZATION_URL" \
+    --header 'content-type: application/json' \
+    --data @- << EOF
+{
+  "query": "$query",
+  "variables": {
+    "policies": $policies
+  }
+}
+EOF
+}
+
+main
