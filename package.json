@@ -45,11 +45,35 @@
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1"
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^2.0.2"
   },
   "scripts": {
     "lint": "eslint src",
     "start": "node --experimental-modules --experimental-json-modules src/index.js",
+    "start:dev": "nodemon --experimental-modules --experimental-json-modules src/index.js",
     "test": "jest"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reactioncommerce/federated-gateway.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "federated",
+    "gateway",
+    "apollo",
+    "reaction",
+    "federation"
+  ],
+  "author": {
+    "name": "Reaction Commerce",
+    "email": "engineering@reactioncommerce.com",
+    "url": "https://reactioncommerce.com"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/reactioncommerce/federated-gateway/issues"
+  },
+  "homepage": "https://github.com/reactioncommerce/federated-gateway#readme"
 }
