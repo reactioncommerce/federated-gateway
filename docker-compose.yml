@@ -8,17 +8,17 @@ networks:
 services:
   gateway:
     image: reactioncommerce/node-dev:12.14.1-v1
-    command: "npm run start"
+    # command: "npm run start"
     networks:
       default:
       reaction:
-    working_dir: "/app"
+    working_dir: "/usr/local/src/app"
     env_file: .env
     ports:
       - "2000:2000"
     volumes:
-      - .:/app
-      - node-modules:/app/node_modules
+      - .:/usr/local/src/app
+      - node-modules:/usr/local/src/app/node_modules
 
 volumes:
   node-modules:
