@@ -14,7 +14,7 @@ This article explains how to run the Reaction Federated Gateway service locally 
 - [Next Steps](#next-steps)
 
 ## Prerequisite
-Federated Gateway is just a single service in a larger e-commerce ecosystem that Reaction is creating. The easiest way to get up and running with the entire Reaction system is to use the [Reaction Platform][platform]. We'll cover how to set it up with and without the Platform, but know the Platform is the preferred way to run the entire Reaction system locally.
+Federated Gateway is just a single service in a larger e-commerce ecosystem that Reaction is creating. The easiest way to get up and running with the entire Reaction system is to use the [Reaction DevelopmentPlatform][platform]. We'll cover how to set it up with and without the Platform, but know the Platform is the preferred way to run the entire Reaction system locally.
 
 _You'll need at least the following._
 * [Git][git]
@@ -75,7 +75,8 @@ Start this service by building and running the Docker containers using the Docke
 ```sh
 docker-compose up
 ```
-TODO: add URL where service will be running
+
+The Federated Gateway will be running at `http://localhost:2000`.
 
 [Back to Top][top]
 
@@ -113,7 +114,7 @@ TODO: add endpoint URL
 
 [top]: #Federated-gateway-quick-start
 [reaction]: https://github.com/reactioncommerce/reaction
-[platform]: https://github.com/reactioncommerce/reaction-platform
+[platform]: https://github.com/reactioncommerce/reaction-development-platform
 [apollo-federation]: https://www.apollographql.com/docs/apollo-server/federation/introduction
 [git]: https://git-scm.com/
 [docker]: https://www.docker.com/get-started
