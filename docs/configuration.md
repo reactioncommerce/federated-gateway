@@ -8,6 +8,7 @@ All Reaction Commerce services follow the twelve-factor app methodology, includi
   TODO: add variables
 - [Variables](#variables)
   - [REACTION_LOG_LEVEL](#reaction_log_level)
+  - [SERVICES](#services)
 - [Validation](#validation)
 - [Further Reading](#further-reading)
 
@@ -20,7 +21,18 @@ The `.env` file is where we keep all the variables about the environment, and an
 [Back to Top][top]
 
 ### REACTION_LOG_LEVEL
+
 Log level for the [Reaction Logger](https://github.com/reactioncommerce/logger).
+
+### SERVICES
+
+Services that you would like running on your Gateway.
+
+The following services are currently capable of joining the Federated Gateway:
+
+- [Reaction API][reaction]
+- [Pricing Engine][pricing-engine]
+- [Reaction Authorization][reaction-authorization]
 
 [Back to Top][top]
 
@@ -40,3 +52,6 @@ Federated Gateway uses [envalid](https://github.com/af/envalid) to validate envi
 [Back to Top][top]
 
 [top]: #federated-gateway-configuration
+[reaction]: https://github.com/reactioncommerce/reaction
+[pricing-engine]: https://github.com/reactioncommerce/pricing-engine
+[reaction-authorization]: https://github.com/reactioncommerce/reaction-authorization
