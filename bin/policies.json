@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "description": "Anyone can access any resource through the Gateway",
+    "subjects": [ "reaction:**" ],
+    "resources": [ "reaction:**" ],
+    "actions": [ "**" ],
+    "effect": "allow"
+  }
+]
