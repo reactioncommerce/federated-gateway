@@ -31,8 +31,22 @@ Services that you would like running on your Gateway.
 The following services are currently capable of joining the Federated Gateway:
 
 - [Reaction API][reaction]
+
+```json
+{ "name": "api", "url": "http://api.reaction.localhost:3000/graphql" }
+```
+
 - [Pricing Engine][pricing-engine]
+
+```json
+{ "name": "pricing", "url": "http://pricing.reaction.localhost:8888" }
+```
+
 - [Reaction Authorization][reaction-authorization]
+
+```json
+{ "name": "authorization", "url": "http://authorization.reaction.localhost:6000" }
+```
 
 [Back to Top][top]
 
