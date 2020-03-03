@@ -29,6 +29,20 @@ Before we cover how to set up and run the service, let's briefly touch on what t
 
 ### With Reaction Platform
 TODO: add instructions on getting started with the Reaction Platform
+1. Add the `federated-gateway` project to the `SUBPROJECT_REPOS` section of the Development Platform's [config.mk](https://github.com/reactioncommerce/reaction-development-platform/blob/trunk/config.mk)
+
+```
+define SUBPROJECT_REPOS
+git@github.com:/reactioncommerce/reaction-hydra.git,reaction-hydra,v3.0.0 \
+git@github.com:/reactioncommerce/reaction.git,reaction,v3.1.0 \
+git@github.com:/reactioncommerce/reaction-identity.git,reaction-identity,v3.0.0 \
+git@github.com:/reactioncommerce/reaction-admin.git,reaction-admin,v3.0.0-beta.5 \
+git@github.com:/reactioncommerce/example-storefront.git,example-storefront,v3.0.0 \
+git@github.com:/reactioncommerce/federated-gateway.git,federated-gateway,trunk
+endef
+```
+
+2. Start the [Reaction DevelopmentPlatform][platform] by following the instructions inside that Project
 
 [Back to Top][top]
 
@@ -76,13 +90,11 @@ Start this service by building and running the Docker containers using the Docke
 docker-compose up
 ```
 
-The Federated Gateway will be running at `http://localhost:2000`.
-
 [Back to Top][top]
 
 ## Endpoints
 
-TODO: add endpoint URL
+The Federated Gateway can be reached at `http://localhost:2000`.
 
 [Back to Top][top]
 
