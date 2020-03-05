@@ -9,7 +9,7 @@ const { createApolloFetch } = require("apollo-fetch");
 const { ApolloGateway, RemoteGraphQLDataSource } = require("@apollo/gateway");
 
 // check Gateway level permissions
-const checkAuthorization = async (route) => {
+const checkAuthorization = async (serviceName) => {
   const fetch = createApolloFetch({
     uri: config.AUTHORIZATION_URL
   });
@@ -18,7 +18,7 @@ const checkAuthorization = async (route) => {
     query: `query isAuthorized($action: String, $resource: String, $subject: String) {
       isAuthorized(input: { action: $action, resource: $resource, subject: $subject })
     }`,
-    variables: { action: "read", resource: `reaction:federation:route:${route}` },
+    variables: { action: "read", resource: `reaction:federation:route:${serviceName}` },
   });
 
   return isAuthorized;
@@ -26,10 +26,10 @@ const checkAuthorization = async (route) => {
 
 class AuthenticatedDataSource extends RemoteGraphQLDataSource {
   async willSendRequest({ request, context }) {
-    const route = request.http.url.replace(/(^\w+:|^)\/\//, '').split(".").splice(0, 1).join(); // TODO: this probably isn't the best way to do this
-
     if (config.GATEWAY_AUTHORIZATION_ENABLED) {
-      const isAuthorized = await checkAuthorization(route);
+      const service = config.SERVICES.find((service) => service.url === request.http.url);
+      const isAuthorized = await checkAuthorization(service.name);
+      console.log("isAuthorized", isAuthorized);
 
       // if this was a user initiated request,
       // the user must be authorized to use the Gateway
