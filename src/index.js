@@ -28,12 +28,14 @@ class AuthenticatedDataSource extends RemoteGraphQLDataSource {
   async willSendRequest({ request, context }) {
     const route = request.http.url.replace(/(^\w+:|^)\/\//, '').split(".").splice(0, 1).join(); // TODO: this probably isn't the best way to do this
 
-    const isAuthorized = await checkAuthorization(route);
+    if (config.GATEWAY_AUTHORIZATION_ENABLED) {
+      const isAuthorized = await checkAuthorization(route);
 
-    // if this was a user initiated request,
-    // the user must be authorized to use the Gateway
-    if (context.requestInitiated && !isAuthorized) {
-      throw new AuthenticationError("Gateway access denied");
+      // if this was a user initiated request,
+      // the user must be authorized to use the Gateway
+      if (context.requestInitiated && !isAuthorized) {
+        throw new AuthenticationError("Gateway access denied");
+      }
     }
 
     // pass the authorization token from the context to underlying services
