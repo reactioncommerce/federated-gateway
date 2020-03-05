@@ -29,7 +29,6 @@ class AuthenticatedDataSource extends RemoteGraphQLDataSource {
     if (config.GATEWAY_AUTHORIZATION_ENABLED) {
       const service = config.SERVICES.find((service) => service.url === request.http.url);
       const isAuthorized = await checkAuthorization(service.name);
-      console.log("isAuthorized", isAuthorized);
 
       // if this was a user initiated request,
       // the user must be authorized to use the Gateway
