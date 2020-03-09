@@ -63,8 +63,8 @@ The initial download and build of these Docker artifacts can take a few minutes 
 
 ## Configuration
 
-Services are to be specified in the `SERVICES` environment variable.
-This setting is an array of objects of the form `{ name: String, url: String }`, where the url is a path to the graphql endpoint of the service being registered.
+Services are to be specified in the `services.js` config file.
+This is an export of an array of objects of the form `{ name: String, url: String }`, where the url is a path to the graphql endpoint of the service being registered.
 
 [Back to Top][top]
 
