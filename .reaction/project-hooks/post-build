@@ -20,3 +20,7 @@ __root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 __root_name=$(basename "${__root_dir}")
 
 echo "${__root_name} post-build script invoked." 2>&1
+
+echo "Running 'npm install' in a Docker container to work around dependency issues." 2>&1
+cd "${__root_dir}"
+docker-compose run --rm gateway npm install
