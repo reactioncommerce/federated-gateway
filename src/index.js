@@ -3,6 +3,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 import config from "./config.js";
+import services from "./services.js";
 
 const { ApolloServer, AuthenticationError } = require("apollo-server");
 const { createApolloFetch } = require("apollo-fetch");
@@ -27,8 +28,9 @@ const checkAuthorization = async (serviceName) => {
 class AuthenticatedDataSource extends RemoteGraphQLDataSource {
   async willSendRequest({ request, context }) {
     if (config.GATEWAY_AUTHORIZATION_ENABLED) {
-      const service = config.SERVICES.find((service) => service.url === request.http.url);
+      const service = services.find((service) => service.url === request.http.url);
       const isAuthorized = await checkAuthorization(service.name);
+      console.log("isAuthorized", isAuthorized);
 
       // if this was a user initiated request,
       // the user must be authorized to use the Gateway
@@ -46,13 +48,13 @@ class AuthenticatedDataSource extends RemoteGraphQLDataSource {
 }
 
 async function main () {
-  if (!config.SERVICES.length) {
+  if (!services.length) {
     // TODO: logger
     console.warn("No services registered.");
   }
 
   const gateway = new ApolloGateway({
-    serviceList: config.SERVICES,
+    serviceList: services,
     buildService({ url }) {
       return new AuthenticatedDataSource({ url });
     },
