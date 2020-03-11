@@ -5,8 +5,9 @@
     "plugin:node/recommended"
   ],
   "env": {
-    "node": true,
-    "es6": true
+    "es6": true,
+    "jasmine": true,
+    "node": true
   },
   "plugins": [
     "import",
@@ -41,3 +42,4 @@
     "prefer-destructuring": 0
   }
 }
+
