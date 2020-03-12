@@ -1,9 +1,44 @@
 import { createRequire } from "module";
-import inventoryService from "./services/inventory.js";
 
 const require = createRequire(import.meta.url);
 const { executeGraphql } = require("federation-testing-tool");
-const { gql } = require("apollo-server");
+const gql = require("graphql-tag");
+
+const typeDefs = gql`
+  extend type Product @key(fields: "upc") {
+    upc: String! @external
+    weight: Int @external
+    price: Int @external
+    inStock: Boolean
+    shippingEstimate: Int @requires(fields: "price weight")
+  }
+`;
+
+let inventory = [
+  { upc: "1", inStock: true },
+  { upc: "2", inStock: false },
+  { upc: "3", inStock: true }
+];
+
+const resolvers = {
+  Product: {
+    __resolveReference(object) {
+      return {
+        ...object,
+        ...inventory.find(product => product.upc === object.upc)
+      };
+    },
+    shippingEstimate: object => {
+      if (object.price > 1000) return 0;
+      return object.weight * 0.5;
+    }
+  }
+};
+
+const service = {
+  typeDefs,
+  resolvers
+};
 
 describe("Based on the data from the external service", () => {
   const query = gql`
@@ -24,7 +59,7 @@ describe("Based on the data from the external service", () => {
       })
     };
 
-    const result = await executeGraphql({ query, mocks, service: inventoryService });
+    const result = await executeGraphql({ query, mocks, service });
 
     expect(result.data._getProduct.shippingEstimate).toEqual(0);
     expect(result.data._getProduct).toEqual({
@@ -42,7 +77,7 @@ describe("Based on the data from the external service", () => {
       })
     };
 
-    const result = await executeGraphql({ query, mocks, service: inventoryService });
+    const result = await executeGraphql({ query, mocks, service });
     expect(result.data._getProduct.shippingEstimate).toEqual(5);
   });
 });
