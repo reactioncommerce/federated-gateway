@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "description": "Anyone can pass through the Gateway",
+    "subjects": [ "**" ],
+    "resources": [ "reaction:federation:route:*" ],
+    "actions": [
+      "read"
+    ],
+    "effect": "allow"
+  }
+]

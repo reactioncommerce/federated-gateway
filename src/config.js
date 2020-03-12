@@ -1,5 +1,6 @@
 import envalid from "envalid";
 
 export default envalid.cleanEnv(process.env, {
-  SERVICES: envalid.json()
+  AUTHORIZATION_URL: envalid.str(),
+  GATEWAY_AUTHORIZATION_ENABLED: envalid.bool()
 });

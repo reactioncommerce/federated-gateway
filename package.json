@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@apollo/gateway": "^0.12.0",
+    "apollo-fetch": "^0.7.0",
     "apollo-server": "^2.10.0",
     "envalid": "^6.0.1",
     "jest": "^25.1.0",
@@ -53,27 +54,5 @@
     "start": "node --experimental-modules --experimental-json-modules src/index.js",
     "start:dev": "nodemon --experimental-modules --experimental-json-modules src/index.js",
     "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/reactioncommerce/federated-gateway.git"
-  },
-  "keywords": [
-    "GraphQL",
-    "federated",
-    "gateway",
-    "apollo",
-    "reaction",
-    "federation"
-  ],
-  "author": {
-    "name": "Reaction Commerce",
-    "email": "engineering@reactioncommerce.com",
-    "url": "https://reactioncommerce.com"
-  },
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/reactioncommerce/federated-gateway/issues"
-  },
-  "homepage": "https://github.com/reactioncommerce/federated-gateway#readme"
+  }
 }
