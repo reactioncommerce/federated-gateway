@@ -3,7 +3,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 import config from "./config.js";
-import services from "./services.js";
+import services from "./services.json";
 
 const { ApolloServer, AuthenticationError } = require("apollo-server");
 const { createApolloFetch } = require("apollo-fetch");
