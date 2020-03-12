@@ -1,5 +1,5 @@
 import { createRequire } from "module";
-import productService from "./services/products.js";
+import inventoryService from "./services/inventory.js";
 
 const require = createRequire(import.meta.url);
 const { executeGraphql } = require("federation-testing-tool");
@@ -24,7 +24,7 @@ describe("Based on the data from the external service", () => {
       })
     };
 
-    const result = await executeGraphql({ query, mocks, service: productService });
+    const result = await executeGraphql({ query, mocks, service: inventoryService });
 
     expect(result.data._getProduct.shippingEstimate).toEqual(0);
     expect(result.data._getProduct).toEqual({
@@ -42,7 +42,7 @@ describe("Based on the data from the external service", () => {
       })
     };
 
-    const result = await executeGraphql({ query, mocks, service: productService });
+    const result = await executeGraphql({ query, mocks, service: inventoryService });
     expect(result.data._getProduct.shippingEstimate).toEqual(5);
   });
 });
