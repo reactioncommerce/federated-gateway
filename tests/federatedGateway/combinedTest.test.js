@@ -6,11 +6,6 @@ const require = createRequire(import.meta.url);
 const { executeGraphql } = require("federation-testing-tool");
 const { gql } = require("apollo-server");
 
-// const { typeDefs } = require("./schema");
-// const { resolvers } = require("./resolvers");
-
-// const { typeDefs: typeDefsProducts } = require("../products/schema");
-
 const services = [
   { inventory: inventoryService },
   {
