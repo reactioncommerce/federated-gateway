@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-require("../../src/checkNodeVersion.cjs");
+require("../../src/check-node-version.cjs");
 
 process.on("unhandledRejection", (err) => {
   throw err;
