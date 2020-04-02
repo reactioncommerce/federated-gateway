@@ -1,6 +1,4 @@
-import { createRequire } from "module";
-
-const require = createRequire(import.meta.url);
+import require from "reekwire";
 
 import config from "./config.js";
 import services from "../services.json";
@@ -53,6 +51,7 @@ async function main () {
     console.warn("No services registered.");
   }
 
+  console.log(services);
   const gateway = new ApolloGateway({
     serviceList: services,
     buildService({ url }) {
