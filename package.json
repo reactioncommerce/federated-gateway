@@ -37,7 +37,7 @@
     "@apollo/gateway": "^0.12.0",
     "apollo-fetch": "^0.7.0",
     "apollo-server": "^2.10.0",
-    "envalid": "^6.0.1",
+    "envalid": "^6.0.2",
     "jest": "^25.1.0",
     "semver": "^7.1.3"
   },
